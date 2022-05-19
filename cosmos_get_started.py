@@ -2,8 +2,8 @@ from azure.cosmos import exceptions, CosmosClient, PartitionKey
 import family
 
 # Initialize the Cosmos client
-endpoint = "endpoint"
-key = 'primary_key'
+endpoint = "https://cosmosdb-test-at.documents.azure.com:443/"
+key = 'gQZPCmcyb3nIQUUGZ1J4IFzQvR7jnn7TmwjxWw12Kj7lJf0Ww6gB9Q4IXG7vQ9DXCVEisyVrovWnneNNN4c9bw=='
 
 # <create_cosmos_client>
 client = CosmosClient(endpoint, key)
@@ -11,14 +11,14 @@ client = CosmosClient(endpoint, key)
 
 # Create a database
 # <create_database_if_not_exists>
-database_name = 'AzureSampleFamilyDatabase'
+database_name = 'atorodb'
 database = client.create_database_if_not_exists(id=database_name)
 # </create_database_if_not_exists>
 
 # Create a container
 # Using a good partition key improves the performance of database operations.
 # <create_container_if_not_exists>
-container_name = 'FamilyContainer'
+container_name = 'atorocontainer'
 container = database.create_container_if_not_exists(
     id=container_name, 
     partition_key=PartitionKey(path="/lastName"),
